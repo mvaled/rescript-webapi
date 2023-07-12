@@ -3,15 +3,16 @@ module Impl = (
     type t
   },
 ) => {
-  @send external arrayBuffer: T.t => Js.Promise.t<Js.Typed_array.ArrayBuffer.t> = "arrayBuffer"
+  @send external arrayBuffer: T.t => Js.Promise2.t<Js.Typed_array.ArrayBuffer.t> = "arrayBuffer"
 
   @get external size: T.t => float = "size"
 
-  @send external slice: (T.t, ~start: int=?, ~end_: int=?, ~contentType: string=?, unit) => T.t = "slice"
+  @send
+  external slice: (T.t, ~start: int=?, ~end_: int=?, ~contentType: string=?, unit) => T.t = "slice"
 
   @send external stream: T.t => Webapi__ReadableStream.t = "stream"
 
-  @send external text: T.t => Js.Promise.t<string> = "text"
+  @send external text: T.t => Js.Promise2.t<string> = "text"
 
   @get external type_: T.t => string = "type"
 }
@@ -27,7 +28,8 @@ type endingType = [#transparent | #native]
 type blobPropertyBag
 
 @obj
-external makeBlobPropertyBag: (~_type: string=?, ~endings: endingType=?, unit) => blobPropertyBag = ""
+external makeBlobPropertyBag: (~_type: string=?, ~endings: endingType=?, unit) => blobPropertyBag =
+  ""
 
 type blobPart
 

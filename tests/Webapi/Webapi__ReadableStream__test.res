@@ -6,18 +6,18 @@ module DefaultReader__test = {
   let test_closed = reader => closed(reader)
 
   let test_cancel = reader =>
-    reader->cancel->Promise.then(() => "cancelled"->Js.log->Promise.resolve)
+    reader->cancel->Js.Promise2.then(() => "cancelled"->Js.log->Js.Promise2.resolve)
 
   let test_cancelWith = reader =>
-    reader->cancelWith("reason")->Promise.then(reason => reason->Js.log->Promise.resolve)
+    reader->cancelWith("reason")->Js.Promise2.then(reason => reason->Js.log->Js.Promise2.resolve)
 
   let test_releaseLock = reader => releaseLock(reader)
 
   let test_read = reader =>
     reader
     ->read
-    ->Promise.then(next =>
-      next->Webapi__Iterator.value->Belt.Option.forEach(_, Js.log)->Promise.resolve
+    ->Js.Promise2.then(next =>
+      next->Webapi__Iterator.value->Belt.Option.forEach(_, Js.log)->Js.Promise2.resolve
     )
 }
 

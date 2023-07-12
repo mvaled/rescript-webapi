@@ -284,11 +284,11 @@ module Body = {
     @get external body: T.t => readableStream = "body"
     @get external bodyUsed: T.t => bool = "bodyUsed"
 
-    @send external arrayBuffer: T.t => Js.Promise.t<arrayBuffer> = "arrayBuffer"
-    @send external blob: T.t => Js.Promise.t<blob> = "blob"
-    @send external formData: T.t => Js.Promise.t<formData> = "formData"
-    @send external json: T.t => Js.Promise.t<Js.Json.t> = "json"
-    @send external text: T.t => Js.Promise.t<string> = "text"
+    @send external arrayBuffer: T.t => Js.Promise2.t<arrayBuffer> = "arrayBuffer"
+    @send external blob: T.t => Js.Promise2.t<blob> = "blob"
+    @send external formData: T.t => Js.Promise2.t<formData> = "formData"
+    @send external json: T.t => Js.Promise2.t<Js.Json.t> = "json"
+    @send external text: T.t => Js.Promise2.t<string> = "text"
   }
 
   type t = body
@@ -336,7 +336,7 @@ module RequestInit = {
     ~integrity: string="",
     ~keepalive: option<bool>=?,
     ~signal: option<signal>=?,
-    ()
+    (),
   ) =>
     make(
       ~_method=?map(encodeRequestMethod, method_),
@@ -351,7 +351,7 @@ module RequestInit = {
       ~integrity,
       ~keepalive?,
       ~signal?,
-      ()
+      (),
     )
 }
 
@@ -403,7 +403,7 @@ module ResponseInit = {
     ~status: option<int>=?,
     ~statusText: option<string>=?,
     ~headers: option<headersInit>=?,
-    ()
+    (),
   ) => make(~status?, ~statusText?, ~headers?, ())
 }
 
@@ -433,7 +433,7 @@ module Response = {
   @send external clone: t => t = "clone"
 }
 
-@val external fetch: string => Js.Promise.t<response> = "fetch"
-@val external fetchWithInit: (string, requestInit) => Js.Promise.t<response> = "fetch"
-@val external fetchWithRequest: request => Js.Promise.t<response> = "fetch"
-@val external fetchWithRequestInit: (request, requestInit) => Js.Promise.t<response> = "fetch"
+@val external fetch: string => Js.Promise2.t<response> = "fetch"
+@val external fetchWithInit: (string, requestInit) => Js.Promise2.t<response> = "fetch"
+@val external fetchWithRequest: request => Js.Promise2.t<response> = "fetch"
+@val external fetchWithRequestInit: (request, requestInit) => Js.Promise2.t<response> = "fetch"

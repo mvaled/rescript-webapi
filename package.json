@@ -27,12 +27,11 @@
   },
   "files": [
     "src",
-    "bsconfig.json"
+    "rescript.json"
   ],
   "author": "Tiny Technologies Inc",
   "license": "MIT",
   "devDependencies": {
-    "@ryyppy/rescript-promise": "^2.1.0",
-    "rescript": "^9.1.4"
+    "rescript": "next"
   }
 }

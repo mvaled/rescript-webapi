@@ -2,12 +2,11 @@ open Webapi.Dom
 open Webapi.FormData
 open Webapi.Dom.HtmlFormElement
 
-@val
-@scope("console")
+@val @scope("console")
 external jsAssert: (bool, string) => unit = "assert"
 
-let createElement = Document.createElement(document)
-let createTextNode = Document.createTextNode(document)
+let createElement = Document.createElement(document, ...)
+let createTextNode = Document.createTextNode(document, ...)
 let createInput = () => createElement("input")
 let createLabelWithText = text => {
   let el = createElement("label")
@@ -185,7 +184,10 @@ Js.log2("collection length:", HtmlOptionsCollection.length(opts))
 Js.log2("selected index", HtmlOptionsCollection.selectedIndex(opts))
 
 HtmlOptionsCollection.clearSelectedIndex(opts)
-jsAssert(HtmlOptionsCollection.selectedIndex(opts) == -1, "HtmlOptionsCollection.clearSelectedIndex sets index to -1")
+jsAssert(
+  HtmlOptionsCollection.selectedIndex(opts) == -1,
+  "HtmlOptionsCollection.clearSelectedIndex sets index to -1",
+)
 
 let opt3 = createElement("option")
 Element.setAttribute(opt3, "value", "3")
@@ -264,7 +266,10 @@ Js.log2("collection length:", HtmlSelectElement.length(select))
 Js.log2("selected index", HtmlSelectElement.selectedIndex(select))
 
 HtmlSelectElement.clearSelectedIndex(select)
-jsAssert(HtmlSelectElement.selectedIndex(select) == -1, "HtmlSelectElement.clearSelectedIndex sets index to -1")
+jsAssert(
+  HtmlSelectElement.selectedIndex(select) == -1,
+  "HtmlSelectElement.clearSelectedIndex sets index to -1",
+)
 
 let opt3 = createElement("option")
 Element.setAttribute(opt3, "value", "3")

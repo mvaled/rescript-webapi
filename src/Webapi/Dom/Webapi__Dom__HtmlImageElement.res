@@ -31,7 +31,7 @@ let setCrossOrigin = (self, value) => setCrossOrigin(self, Js.Null.fromOption(va
 @get external decoding: t => string = "decoding"
 @set external setDecoding: (t, string) => unit = "decoding"
 
-@send external decode: t => Js.Promise.t<unit> = "decode"
+@send external decode: t => Js.Promise2.t<unit> = "decode"
 
 include Webapi__Dom__Node.Impl({
   type t = t

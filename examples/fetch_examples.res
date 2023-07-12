@@ -1,5 +1,5 @@
 open Webapi
-open Promise
+open Js.Promise2
 
 let _ = {
   Fetch.fetch("/api/hellos/1")
